@@ -67,15 +67,6 @@ const DropDownMenu = ({ isMenuOpen, scroll, onNavigate }) => {
             {" "}
             <b>Projects</b>
           </div>
-          <a
-            className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500  ml-12 mt-4 hover:cursor-pointer"
-            href="https://drive.google.com/file/d/1yP41vwIiO41W0N3DLySMgbdd9-mEpg7S/view?usp=sharing"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {" "}
-            <b>My CV</b>
-          </a>
           <div
             onClick={() => {
               setIsContacts(true);
