@@ -32,7 +32,7 @@ const AboutMe = () => {
             className="text-white font-montserrat pl-3 pt-3 p-3 "
             style={{ lineHeight: "20px" }}
           >
-            Based in The Hague, Netherlands, I am a dynamic full-stack developer, and a CS
+            Based in Maastricht, Netherlands, I am a dynamic full-stack developer, and a CS
             graduate from OSU, Corvallis, US.
           </p>
           <p

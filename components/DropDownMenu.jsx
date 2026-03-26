@@ -1,8 +1,34 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
-const DropDownMenu = ({ isMenuOpen, scroll }) => {
+import React, { useState, useCallback } from "react";
+
+function smoothScrollTo(scrollEl, targetOffset, duration = 1200) {
+  const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+  const startTop = scrollEl.scrollTop;
+  const endTop = targetOffset * maxScroll;
+  const delta = endTop - startTop;
+  const startTime = performance.now();
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    scrollEl.scrollTop = startTop + delta * easeInOutCubic(progress);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const DropDownMenu = ({ isMenuOpen, scroll, onNavigate }) => {
   const [isContacts, setIsContacts] = useState(false);
+
+  const scrollToFraction = useCallback((fraction, waypointIndex) => {
+    if (scroll?.el) {
+      smoothScrollTo(scroll.el, fraction);
+      if (onNavigate) onNavigate(waypointIndex);
+    }
+  }, [scroll, onNavigate]);
+
   return (
     <div
       className={` fixed z-10 right-0 h-screen sm:w-1/2 md:w-1/6 flex flex-col justify-top items-center transition-all duration-300 ease-linear transform ${
@@ -14,36 +40,28 @@ const DropDownMenu = ({ isMenuOpen, scroll }) => {
       {!isContacts ? (
         <>
           <div
-            onClick={() => {
-              scroll.el.scrollTop = 0;
-            }}
+            onClick={() => scrollToFraction(0, 0)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500 ml-12 mt-24 hover:cursor-pointer"
           >
             {" "}
             <b>Home</b>
           </div>
           <div
-            onClick={() => {
-              scroll.el.scrollTop = 1200;
-            }}
+            onClick={() => scrollToFraction(0.32, 1)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500 ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}
             <b>About</b>
           </div>
           <div
-            onClick={() => {
-              scroll.el.scrollTop = 2400;
-            }}
+            onClick={() => scrollToFraction(0.63, 2)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500 ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}
             <b>Skills</b>
           </div>
           <div
-            onClick={() => {
-              scroll.el.scrollTop = 3768;
-            }}
+            onClick={() => scrollToFraction(1, 3)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500  ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}

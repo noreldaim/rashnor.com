@@ -5,75 +5,87 @@ import { DoubleSide } from "three";
 import Folder from "./Folder";
 import TypewriterText from "./TypewriterText";
 import Project from "./Project";
-export function Monitor({ isAtPC }) {
-  const { gl } = useThree();
 
+const projects = {
+  "rashnor.com": {
+    description:
+      "My personal portfolio website, built around a 3d world, using handcrafted 3d assets with Blender, the website showcases my personal info, skills, bio, and projects.",
+    stacks: ["Next.js/React", "Three.js", "React Three Fiber", "Blender", "Theatre.js"],
+    projectLink: "https://rashnor.com/",
+    githubLink: "https://github.com/Rasheednour/rashnor.com",
+    gifSrc: "rashnor_dev.gif",
+  },
+  "Promptron": {
+    description:
+      "A web application designed to inspire creativity and facilitate the sharing of AI prompts for platforms like ChatGPT and Midjourney.",
+    stacks: [
+      "Next.js/React.js",
+      "Typescript/Tailwind",
+      "MongoDB/Mongoose",
+      "Firebase",
+    ],
+    projectLink: "https://promptronai.vercel.app/",
+    githubLink: "https://github.com/Rasheednour/promptron",
+    gifSrc: "prompty_dumpty.gif",
+  },
+  "TCG_Central": {
+    description:
+      "An interactive application for designing and playing user-created Trading Card Games. It features extensive customization tools, deck building, game rule creation, and community sharing features.",
+    stacks: [
+      "Javascript/React.js",
+      "Express.js/Node.js",
+      "GCP/Firebase",
+      "Phaser3",
+    ],
+    projectLink: "https://drive.google.com/file/d/1W3c_vOSwjSZBPFG-4pvnqVuPfqh5Snro/view?usp=sharing",
+    githubLink: "https://github.com/Rasheednour/TCG-Central",
+    gifSrc: "tcg_central.gif",
+  },
+  "Posts_API": {
+    description:
+      "A REST API representing a simple social media application with support for user authentication, userposts, and comments.",
+    stacks: ["Javascript/Pug", "Express.js/Node.js", "GCP/Google OAuth 2.0"],
+    projectLink:
+      "https://drive.google.com/file/d/1jVhmBvhAbVc3hE1X8ZCrpFHnon8dKRk_/view?usp=drive_link",
+    githubLink: "https://github.com/Rasheednour/posts-api",
+    gifSrc: "posts_api.gif",
+  },
+  "Pomodoor": {
+    description:
+      "A retro-style time management app with task creation, execution, and work time management features based on the Pomodoro technique.",
+    stacks: ["Javascript/HTML/CSS", "React.js"],
+    projectLink: "https://pomodoor-7j7okyyl9-rasheednour.vercel.app/",
+    githubLink: "https://github.com/Rasheednour/pomodoor",
+    gifSrc: "pomodoor.gif",
+  },
+  "SmallSH": {
+    description:
+      "A mini shell program written in C. The program provides a command-line interface for executing shell commands.",
+    stacks: ["C"],
+    githubLink: "https://github.com/Rasheednour/smallsh-",
+    gifSrc: "smallsh.gif",
+  },
+  "OpenCL_PS": {
+    description:
+      "This C++ particle simulator app leverages OpenCL/OpenGL and parallel programming to simulate a particle system where particles bounce off spheres and change colors upon impact.",
+    stacks: ["OpenCL/OpenGL", "C++", "GLUI", "Parallel Programming"],
+    githubLink: "https://github.com/Rasheednour/openCL-particle-effect-simulatorr",
+    gifSrc: "particles.png",
+  },
+};
+
+export function Monitor({ isAtPC, autoShowProjects }) {
+  const { gl } = useThree();
 
   const [projectsTab, setProjectsTab] = useState(false);
   const [currentProject, setCurrentProject] = useState("Projects");
-  const projects = {
-    "rashnor.com": {
-      description:
-        "My personal portfolio website, built around a 3d world, using handcrafted 3d assets with Blender, the website showcases my personal info, skills, bio, and projects.",
-      stacks: ["Next.js/React.js", "Three.js", "React Three Fiber", "Blender", "Theatre.js"],
-      projectLink: "https://rashnor.com/",
-      githubLink: "https://github.com/Rasheednour/rashnor.com",
-      gifSrc: "rashnor_dev.gif",
-    },
-    "Promptron": {
-      description:
-        "A web application designed to inspire creativity and facilitate the sharing of AI prompts for platforms like ChatGPT and Midjourney.",
-      stacks: [
-        "Next.js/React.js",
-        "Typescript/Tailwind",
-        "MongoDB/Mongoose",
-        "Firebase",
-      ],
-      projectLink: "https://promptronai.vercel.app/",
-      githubLink: "https://github.com/Rasheednour/promptron",
-      gifSrc: "prompty_dumpty.gif",
-    },
-    "TCG_Central": {
-      description:
-        "An interactive application for designing and playing user-created Trading Card Games. It features extensive customization tools, deck building, game rule creation, and community sharing features.",
-      stacks: [
-        "Javascript/React.js",
-        "Express.js/Node.js",
-        "GCP/Firebase",
-        "Phaser3",
-      ],
-      projectLink: "https://tcg-central-backend.ew.r.appspot.com/",
-      githubLink: "https://github.com/Rasheednour/TCG-Central",
-      gifSrc: "tcg_central.gif",
-    },
-    "Posts_API": {
-      description:
-        "A REST API representing a simple social media application with support for user authentication, userposts, and comments.",
-      stacks: ["Javascript/Pug", "Express.js/Node.js", "GCP/Google OAuth 2.0"],
-      projectLink:
-        "https://drive.google.com/file/d/1jVhmBvhAbVc3hE1X8ZCrpFHnon8dKRk_/view?usp=drive_link",
-      githubLink: "https://github.com/Rasheednour/posts-api",
-      gifSrc: "posts_api.gif",
-    },
-    "Pomodoor": {
-      description:
-        "A retro-style time management app with task creation, execution, and work time management features based on the Pomodoro technique.",
-      stacks: ["Javascript/HTML/CSS", "React.js"],
-      projectLink: "https://pomodoor-7j7okyyl9-rasheednour.vercel.app/",
-      githubLink: "https://github.com/Rasheednour/pomodoor",
-      gifSrc: "pomodoor.gif",
-    },
-    "Tracker": {
-      description:
-        "A simple exercise tracking web app developed using the MERN stack.",
-      stacks: ["Javascript/React.js", "Express.js/Node.js, MongoDB/Mongoose"],
-      projectLink: "https://pomodoor.herokuapp.com/",
-      githubLink: "https://github.com/Rasheednour/CS290-Exercise-Tracker",
-      gifSrc: "pomodoor.gif",
-    },
-  };
+
   useEffect(() => {
-  }, [currentProject]);
+    if (autoShowProjects && isAtPC) {
+      setProjectsTab(true);
+      setCurrentProject("Projects");
+    }
+  }, [autoShowProjects, isAtPC]);
 
   return (
       <Html
@@ -143,11 +155,11 @@ export function Monitor({ isAtPC }) {
                             setCurrentProject={setCurrentProject}
                           />
                           <Folder
-                            name="Promptron"
+                            name="TCG_Central"
                             setCurrentProject={setCurrentProject}
                           />
                           <Folder
-                            name="TCG_Central"
+                            name="Promptron"
                             setCurrentProject={setCurrentProject}
                           />
                           <Folder
@@ -156,6 +168,14 @@ export function Monitor({ isAtPC }) {
                           />
                           <Folder
                             name="Pomodoor"
+                            setCurrentProject={setCurrentProject}
+                          />
+                          {/* <Folder
+                            name="SmallSH"
+                            setCurrentProject={setCurrentProject}
+                          /> */}
+                          <Folder
+                            name="OpenCL_PS"
                             setCurrentProject={setCurrentProject}
                           />
                         </div>
@@ -190,9 +210,9 @@ export function Monitor({ isAtPC }) {
                             │&nbsp; Oregon State University, (4.0 GPA)
                           </p>
                           <p className="sgt mt-0">
-                            <b>cur.</b> ├─ Working as a freelance Fullstack
+                            <b>cur.</b> ├─ Working as the lead Fullstack
                           </p>
-                          <p className="sgt2">│&nbsp; Developer.</p>
+                          <p className="sgt2">│&nbsp; Developer at AgriData Innovations.</p>
                         </div>
                       )}
                     </div>

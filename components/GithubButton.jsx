@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-const GithubButton = () => {
-    const githubLink = "https://github.com/Rasheednour/rashnor.com"
+const GithubButton = memo(() => {
+    const githubLink = "https://github.com/noreldaim/rashnor.com"
   return (
     <div>
         
@@ -10,6 +10,6 @@ const GithubButton = () => {
         </a>
     </div>
   )
-}
+})
 
 export default GithubButton

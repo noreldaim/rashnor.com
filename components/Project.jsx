@@ -24,7 +24,7 @@ const Project = ({
           <b>Tech Stack</b>
         </h2>
         <div className="tech-stack">
-            {stacks.map((stack) => (<p>
+            {stacks.map((stack) => (<p key={stack}>
             <b>- {stack}</b>
           </p>))}
           
@@ -32,11 +32,11 @@ const Project = ({
         
       </div>
       <div className="project-media">
-        <img className="project-gif" src={gifSrc}></img>
+        <img className="project-gif" src={gifSrc} loading="lazy" alt={`${title} demo`}></img>
         <div className="project-buttons">
-          <a className="project-button" href={projectLink} target="_blank" rel="noreferrer">
-            <b>Website</b>
-          </a>
+          {projectLink && <a className="project-button" href={projectLink} target="_blank" rel="noreferrer">
+            <b>Project</b>
+          </a>}
           <a className="project-button" href={githubLink} target="_blank" rel="noreferrer">
             <b>Github</b>
           </a>

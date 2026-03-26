@@ -17,17 +17,17 @@ const Skills = () => {
     <div
       className="flex row-auto"
       style={{
-        width: "650px",
+        width: "700px",
         height: "180px",
       }}
     >
       <div className="about-me">
         <p className="text-white font-montserrat pl-3 pt-3 p-3 " style={{lineHeight: "30px"}}>
-          <b>Languages:</b> TS/JS, Python, C++, C, HTML/CSS, SQL.<br></br>
-          <b>Frontend:</b> Next.js/React.js.<br></br>
-          <b>Backend:</b> Node.js/Express.js, Next.js/Next Auth, Flask.<br></br>
-          <b>Databases:</b> PostgreSQL, MongoDB/Mongoose, Firebase.<br></br>
-          <b>Tools:</b> GCP, Docker, CI/CD (Github Actions), TDD.
+          <b>Languages:</b> TS/JS, Python, C++, C, HTML/CSS, SQL<br></br>
+          <b>Frontend:</b> Next.js/React<br></br>
+          <b>Backend:</b> Node.js/Express, Flask<br></br>
+          <b>Databases:</b> PostgreSQL, MongoDB/Mongoose, Firebase<br></br>
+          <b>Cloud & Tools:</b> AWS (EC2, S3, CW), Portainer, CI/CD (Gitlab CI).
         </p>
       </div>
       <div className="profile">

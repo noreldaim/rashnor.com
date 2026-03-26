@@ -1,13 +1,8 @@
-import React, {useRef, useEffect} from "react";
+import React, { memo } from "react";
 
-const MonitorLight = () => {
-  
-  const lightRef = useRef();
-  let lightIntensity = 1;
-  
+const MonitorLight = memo(() => {
   return (
     <rectAreaLight
-      ref={lightRef}
       position={[0, .09, -.30]}
       rotation={[-Math.PI, 0, 0]}
       width={.2}
@@ -16,6 +11,6 @@ const MonitorLight = () => {
       color={'green'}
     />
   );
-};
+});
 
 export default MonitorLight;
