@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -390,367 +392,471 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
   
-  /******************************Screen UI*******************************/
-  .wrapper {
-    width: 400px;
-    height: 330px;
-    background-color: rgb(9, 37, 0);
+  /******************************Terminal Screen UI*******************************/
+  :root {
+    --term-green: #00ff66;
+    --term-green-dim: #00aa44;
+    --term-green-dark: #005522;
+    --term-bg: #0a1a00;
+    --term-bg-panel: #0d2800;
+    --term-amber: #ffb000;
+  }
+
+  .term-wrapper {
+    width: 390px;
+    height: 320px;
+    background-color: var(--term-bg);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: 30;
-  }
-  
-  .wrapper button {
-    font-size: 10px;
-  }
-  
-  .window {
-    height: 320px;
-    width: 365px;
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-family: 'VT323', 'Courier New', monospace;
+    color: var(--term-green);
+    overflow: hidden;
+    position: relative;
   }
 
-  .skynet-window {
-    height: 320px;
-    width: 365px;
-    margin-top: 5px;
+  /* Boot screen */
+  .term-boot {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: not-allowed;
   }
-  
-  .tabs {
-    background-color: red;
-    height: 30px;
+
+  /* Main screen layout */
+  .term-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    padding: 6px;
   }
-  
-  .current-tab {
-    background-color: rgb(0, 255, 102);
-    height: 30px;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-  }
-  
-  .idle-tab {
-    background-color: rgb(17, 66, 0);
-    border-top: 1px solid rgb(0, 255, 102);
-    border-right: 1px solid rgb(0, 255, 102);
-    border-left: 1px solid rgb(0, 255, 102);
-    height: 30px;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-  }
-  
-  .current-tab:hover {
-    cursor: pointer;
-  }
-  
-  .idle-tab:hover {
-    cursor: pointer;
-  }
-  
-  .current-tab p {
-    font-size: 20px;
-    margin-left: 30px;
-    justify-content: center;
-    color: rgb(13, 50, 1);
-    font-family: "Courier";
-    word-spacing: 1px;
-    font-weight: 800;
-  }
-  
-  .idle-tab p {
-    font-size: 20px;
-    margin-left: 30px;
-    justify-content: center;
-    color: rgba(0, 255, 102, 0.957);
-    font-family: "Courier";
-    word-spacing: 1px;
-    font-weight: 800;
-  }
-  
-  .projects-tab :hover {
-    cursor: pointer;
-  }
-  
-  .bbt {
-    font-size: 20px;
-    margin-left: 30px;
-    justify-content: center;
-    color: rgb(13, 50, 1);
-    font-family: "Courier";
-    word-spacing: 1px;
-    font-weight: 800;
-  }
-  
-  .bgt {
-    font-size: 20px;
-    margin-left: 30px;
-    justify-content: center;
-    color: rgba(0, 255, 102, 0.957);
-    font-family: "Courier";
-    word-spacing: 1px;
-    font-weight: 800;
-  }
-  
-  .sgt {
-    font-size: 12px;
-    margin-left: 10px;
-    justify-content: left;
-    color: rgb(0, 255, 102);
-    font-family: "Courier";
-    word-spacing: -2px;
-    text-align: left;
-  }
-  
-  .sgt2 {
-    font-size: 12px;
-    margin-left: 10px;
-    justify-content: left;
-    color: rgb(0, 255, 102);
-    font-family: "Courier";
-    word-spacing: -2px;
-    text-align: left;
-    padding-left: 34px;
-  }
-  
-  .sbt {
+
+  /* Title bar */
+  .term-titlebar {
     font-size: 14px;
-    margin-left: 30px;
-    justify-content: center;
-    color: rgb(9, 37, 0);
-    font-family: "Courier";
-    word-spacing: 1px;
-  }
-  
-  .tab-content {
-    border: 3px solid rgb(0, 255, 102);
-    width: 100%;
-    height: 100%;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border: 1px solid var(--term-green-dark);
+    background: linear-gradient(90deg, var(--term-bg-panel) 0%, transparent 100%);
     display: flex;
-    flex-direction: row;
-  }
-  
-  .bio-content {
-    height: 96%;
-    width: 96%;
-    margin: 5px 5px 5px 5px;
-    border: 2px solid rgb(0, 255, 102);
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-    background-color: rgb(13, 51, 0);
-  }
-  
-  .content-section{
-    width: 96%;
-    height: 100%;
-    
-  }
-  .projects-content {
-    height: 96%;
-    width: 96%;
-    margin: 5px 5px 5px 5px;
-    border: 2px solid rgb(0, 255, 102);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: top;
-    align-items: top;
-    background-color: rgb(13, 51, 0);
-  }
-  
-  .project-content {
-    width: 48%;
-    height: 100%;
-  }
-  
-  .project-media {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
+    justify-content: space-between;
     align-items: center;
-    margin-right: 5px;
-    margin-top: 15px;
+    flex-shrink: 0;
   }
-  
-  .project-buttons {
-    width: 100%;
-    height: 10%;
+
+  .term-titlebar-label {
+    color: var(--term-green);
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.4);
+  }
+
+  .term-titlebar-time {
+    color: var(--term-green-dim);
+    font-size: 13px;
+  }
+
+  /* Function key navigation */
+  .term-nav {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+    gap: 0;
+    margin-top: 4px;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--term-green);
   }
-  
-  .project-button {
-    background-color: rgb(0, 255, 102);
-    width: 45%;
-    height: 85%;
-    font-family: "Courier";
-    font-size: 12px;
+
+  .term-nav-btn {
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 15px;
+    padding: 3px 12px;
+    background: var(--term-bg-panel);
+    color: var(--term-green-dim);
+    border: 1px solid var(--term-green-dark);
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.1s;
+    letter-spacing: 0.5px;
+  }
+
+  .term-nav-btn:hover {
+    color: var(--term-green);
+    background: var(--term-bg);
+  }
+
+  .term-nav-btn.active {
+    color: var(--term-bg);
+    background: var(--term-green);
+    border-color: var(--term-green);
+  }
+
+  .term-nav-btn .fkey {
+    color: var(--term-amber);
+    margin-right: 3px;
+  }
+
+  .term-nav-btn.active .fkey {
+    color: var(--term-bg);
+  }
+
+  /* Content area */
+  .term-content {
+    flex: 1;
+    border: 1px solid var(--term-green);
+    border-top: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 6px;
+    background: var(--term-bg);
+    scrollbar-width: thin;
+    scrollbar-color: var(--term-green) var(--term-bg-panel);
+  }
+
+  .term-content::-webkit-scrollbar {
+    width: 10px;
+  }
+  .term-content::-webkit-scrollbar-track {
+    background: var(--term-bg-panel);
+    border-left: 1px solid var(--term-green-dark);
+  }
+  .term-content::-webkit-scrollbar-thumb {
+    background: var(--term-green);
+    border: 1px solid var(--term-green);
+  }
+  .term-content::-webkit-scrollbar-thumb:hover {
+    background: var(--term-amber);
+  }
+  .term-content::-webkit-scrollbar-button:single-button {
+    background: var(--term-bg-panel);
+    border: 1px solid var(--term-green-dark);
+    height: 10px;
+    display: block;
+  }
+
+  /* Status bar */
+  .term-statusbar {
+    font-size: 13px;
+    padding: 2px 8px;
+    background: var(--term-green);
+    color: var(--term-bg);
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── BIO VIEW ───────────────────── */
+  .term-prompt {
+    color: var(--term-amber);
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .term-prompt-cmd {
+    color: var(--term-green);
+  }
+
+  .term-divider {
+    color: var(--term-green-dark);
+    font-size: 14px;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .term-bio-name {
+    font-size: 20px;
+    color: var(--term-green);
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
+    letter-spacing: 2px;
+    margin: 2px 0;
+  }
+
+  .term-bio-role {
+    font-size: 15px;
+    color: var(--term-green-dim);
+    margin-bottom: 6px;
+  }
+
+  .term-bio-location {
+    font-size: 14px;
+    color: var(--term-green-dark);
+    margin-bottom: 8px;
+  }
+
+  .term-timeline-row {
+    font-size: 14px;
+    display: flex;
+    line-height: 1.5;
+    padding-left: 4px;
+  }
+
+  .term-timeline-year {
+    color: var(--term-amber);
+    min-width: 42px;
+    flex-shrink: 0;
+  }
+
+  .term-timeline-connector {
+    color: var(--term-green-dark);
+    margin: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .term-timeline-text {
+    color: var(--term-green);
+    font-size: 14px;
+  }
+
+  .term-timeline-sub {
+    color: var(--term-green-dim);
+    font-size: 13px;
+    padding-left: 5px;
+    line-height: 1.8;
+  }
+
+  .term-cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--term-green);
+    animation: term-blink 1s step-end infinite;
+    vertical-align: middle;
     margin-left: 2px;
-    margin-right: 2px;
-    color: rgb(13, 50, 1);
-    text-align: center;
   }
-  
-  .project-button:hover {
-    background-color: rgb(17, 66, 0);
-    border: 1px solid rgb(0, 255, 102);
-    color: rgb(0, 255, 102);
+
+  @keyframes term-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
-  .project-gif {
-    border: 2px solid rgb(0, 255, 102);
-    width: 100%;
-    height: 75%;
+
+  /* ── PROJECTS LIST VIEW ────────── */
+  .term-project-row {
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    cursor: pointer;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(0, 255, 102, 0.08);
+    transition: background 0.08s;
   }
-  
-  .project-title {
-    font-size: 16px;
-    color: rgb(0, 255, 102);
-    justify-content: center;
-    text-align: justify;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: "Courier";
+
+  .term-project-row:hover {
+    background: rgba(0, 255, 102, 0.1);
   }
-  
-  .project-subtitle {
+
+  .term-project-row.selected {
+    background: var(--term-green);
+    color: var(--term-bg);
+  }
+
+  .term-project-cursor {
+    width: 14px;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--term-amber);
+  }
+
+  .term-project-row.selected .term-project-cursor {
+    color: var(--term-bg);
+  }
+
+  .term-project-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .term-project-tag {
     font-size: 12px;
-    color: rgb(0, 255, 102);
-    justify-content: center;
-    text-align: justify;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 4px;
-    font-family: "Courier";
+    color: var(--term-green-dim);
+    margin-left: 6px;
+    white-space: nowrap;
   }
-  .project-description {
-    font-size: 9px;
-    color: rgb(0, 255, 102);
-    justify-content: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: "Courier";
-    word-spacing: 0px;
-    height: 41%;
+
+  .term-project-row.selected .term-project-tag {
+    color: var(--term-bg-panel);
   }
-  
-  .back-arrow {
-    height: 6%;
+
+  .term-list-header {
+    font-size: 13px;
+    color: var(--term-green-dark);
+    padding: 0 6px 4px;
+    border-bottom: 1px solid var(--term-green-dark);
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
   }
-  .back-arrow:hover {
-    cursor: pointer;
-  }
-  .tech-stack {
-    justify-content: center;
-    height: 22%;
-  }
-  
-  .tech-stack p {
-    font-size: 9px;
-    color: rgb(0, 255, 102);
-    font-family: "Courier";
-    word-spacing: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  
-  .folder {
-    height: 50%;
-    width: 32%;
+
+  /* ── PROJECT DETAIL VIEW ────────── */
+  .term-detail {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 3px;
-  }
-  
-  .scroll-space {
-    width: 4%;
+    gap: 6px;
     height: 100%;
-    background-color: rgb(0, 255, 102);
-    display: flex;
-    flex-direction: column;
   }
-  
-  .arrow {
-    height: 6%;
-    width: 100%;
-    background-color: rgb(0, 255, 102);
+
+  .term-detail-header {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--term-green-dark);
+  }
+
+  .term-detail-title {
+    font-size: 18px;
+    color: var(--term-green);
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.4);
+    letter-spacing: 1px;
+    flex: 1;
+  }
+
+  .term-back-btn {
+    font-size: 13px;
+    color: var(--term-amber);
+    cursor: pointer;
+    padding: 1px 6px;
+    border: 1px solid var(--term-amber);
+    transition: all 0.1s;
+    flex-shrink: 0;
+  }
+
+  .term-back-btn:hover {
+    background: var(--term-amber);
+    color: var(--term-bg);
+  }
+
+  /* GIF frame with CRT sub-monitor look */
+  .term-gif-frame {
+    border: 2px solid var(--term-green);
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    height: 195px;
+    flex: 0.88;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
+    margin-left: 5px;
   }
-  
-  .arrow:hover {
-    cursor: pointer;
-  }
-  
-  .scroll-bar {
-    height: 90%;
+
+  .term-gif-frame img {
     width: 100%;
-    background-color: rgb(17, 66, 0);
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.7) contrast(1.1);
+  }
+
+  .term-gif-frame::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px
+    );
+    pointer-events: none;
+  }
+
+  .term-gif-label {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 11px;
+    color: var(--term-green);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0 4px;
+    font-family: 'VT323', monospace;
+    text-shadow: 0 0 4px rgba(0, 255, 102, 0.6);
+  }
+
+  /* Description */
+  .term-detail-desc {
+    font-size: 14px;
+    color: var(--term-green-dim);
+    line-height: 1.4;
+    padding-bottom: 5px;
+  }
+
+  /* Tech stack badges */
+  .term-stack-section {
+    border-top: 1px solid var(--term-green-dark);
+    padding-top: 8px;
+    margin-bottom: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: top;
-    align-items: center;
+    gap: 4px;
   }
-  
-  .arrow-up {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-  
-    border-bottom: 6px solid black;
+
+  .term-stack-label {
+    font-size: 12px;
+    color: var(--term-green-dark);
+    letter-spacing: 2px;
   }
-  
-  .arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-  
-    border-top: 6px solid black;
+
+  .term-stack-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
   }
-  
-  .bar {
-    background-color: rgb(0, 255, 102);
-    width: 80%;
-    height: 95%;
-    margin-top: 3px;
+
+  .term-badge {
+    font-size: 12px;
+    font-family: 'VT323', monospace;
+    padding: 1px 6px;
+    border: 1px solid var(--term-green-dim);
+    color: var(--term-green);
+    background: rgba(0, 255, 102, 0.05);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
   }
-  
-  .folder-image:hover {
+
+  /* Action buttons */
+  .term-actions {
+    display: flex;
+    gap: 6px;
+  }
+
+  .term-action-btn {
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    padding: 3px 10px;
+    border: 1px solid var(--term-green);
+    background: var(--term-bg-panel);
+    color: var(--term-green);
     cursor: pointer;
+    text-decoration: none;
+    transition: all 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .term-action-btn:hover {
+    background: var(--term-green);
+    color: var(--term-bg);
+  }
+
+  .term-action-btn .fkey {
+    color: var(--term-amber);
+    font-size: 12px;
+  }
+
+  .term-action-btn:hover .fkey {
+    color: var(--term-bg);
   }
   
   @keyframes typing {
