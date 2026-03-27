@@ -215,18 +215,39 @@ function ProjectDetail({ project, onBack }) {
 }
 
 /* ─── Monitor Shell ────────────────────────────── */
-export function Monitor({ isAtPC, autoShowProjects }) {
+export function Monitor({ isAtPC, autoShowProjects, onSignIn }) {
   const { gl } = useThree();
   const [view, setView] = useState("bio"); // "bio" | "projects" | "detail"
   const [selectedProject, setSelectedProject] = useState(null);
   const [hoveredIdx, setHoveredIdx] = useState(-1);
+  const [signedIn, setSignedIn] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
 
+  // Show sign-in button after a short delay when arriving at PC
   useEffect(() => {
-    if (autoShowProjects && isAtPC) {
-      setView("projects");
+    if (isAtPC && !signedIn) {
+      const timer = setTimeout(() => setShowSignIn(true), 800);
+      return () => clearTimeout(timer);
+    }
+    if (!isAtPC) {
+      setShowSignIn(false);
+      setSignedIn(false);
+    }
+  }, [isAtPC, signedIn]);
+
+  const handleSignIn = () => {
+    setSignedIn(true);
+    setShowSignIn(false);
+    if (onSignIn) onSignIn();
+  };
+
+  // Always start at bio on sign-in
+  useEffect(() => {
+    if (signedIn) {
+      setView("bio");
       setSelectedProject(null);
     }
-  }, [autoShowProjects, isAtPC]);
+  }, [signedIn]);
 
   const openProject = (idx) => {
     setSelectedProject(idx);
@@ -267,6 +288,16 @@ export function Monitor({ isAtPC, autoShowProjects }) {
             <div className="term-boot">
               <img src="images/skynet.png" width={330} alt="boot" />
               <TypewriterText text={"****"} />
+            </div>
+          ) : !signedIn ? (
+            <div className="term-boot">
+              <img src="images/skynet.png" width={330} alt="boot" />
+              {showSignIn && (
+                <button className="term-signin-btn" onClick={handleSignIn}>
+                  <span className="term-cursor-blink" style={{ marginRight: 8 }} />
+                  SIGN IN
+                </button>
+              )}
             </div>
           ) : (
             <div className="term-screen">

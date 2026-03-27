@@ -82,7 +82,7 @@ export function World(props) {
           rotation={monitorMesh.rotation}
           scale={monitorMesh.scale}
         >
-          <Monitor isAtPC={props.isAtPC} autoShowProjects={props.autoShowProjects} />
+          <Monitor isAtPC={props.isAtPC} autoShowProjects={props.autoShowProjects} onSignIn={props.onSignIn} />
         </group>
       )}
     </group>

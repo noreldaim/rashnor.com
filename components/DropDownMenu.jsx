@@ -47,25 +47,25 @@ const DropDownMenu = ({ isMenuOpen, scroll, onNavigate }) => {
             <b>Home</b>
           </div>
           <div
-            onClick={() => scrollToFraction(0.32, 1)}
+            onClick={() => scrollToFraction(0.252, 1)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500 ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}
             <b>About</b>
           </div>
           <div
-            onClick={() => scrollToFraction(0.63, 2)}
+            onClick={() => scrollToFraction(0.500, 2)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500 ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}
             <b>Skills</b>
           </div>
           <div
-            onClick={() => scrollToFraction(1, 3)}
+            onClick={() => scrollToFraction(0.788, 3)}
             className="font-montserrat text-2xl text-white mr-10 hover:text-indigo-500  ml-12 mt-4 hover:cursor-pointer"
           >
             {" "}
-            <b>Projects</b>
+            <b>Terminal</b>
           </div>
           <div
             onClick={() => {

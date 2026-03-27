@@ -35,7 +35,7 @@ const Scene = ({ isAtPC, setIsAtPC }) => {
       lastPosition.current = newPosition;
       sheet.sequence.position = newPosition;
     }
-    if (newPosition > 5.25) {
+    if (newPosition > 5.5) {
       if (!isAtPC) setIsAtPC(true);
     } else {
       if (isAtPC) setIsAtPC(false);
@@ -51,7 +51,7 @@ const AutoScroll = ({ setScroll }) => {
   return null;
 };
 
-const MainCanvas = ({ setScroll, autoShowProjects }) => {
+const MainCanvas = ({ setScroll, autoShowProjects, onSignIn }) => {
   const sheet = getProject("Walkthrough", { state: walkthrough }).sheet(
     "Scene"
   );
@@ -64,7 +64,7 @@ const MainCanvas = ({ setScroll, autoShowProjects }) => {
       >
         <color attach="background" args={["#0a0a2e"]} />
         <fog attach="fog" args={["#0a0a2e", 8, 30]} />
-        <ScrollControls pages={4} damping={0.1}>
+        <ScrollControls pages={5} damping={0.1}>
           <SheetProvider sheet={sheet}>
             <Suspense fallback={null}>
             <AutoScroll setScroll={setScroll} />
@@ -114,7 +114,7 @@ const MainCanvas = ({ setScroll, autoShowProjects }) => {
               azimuth={[-Math.PI / 22, Math.PI / 22]}
             >
               <Fire style={{ touchAction: "none" }} />
-              <World isAtPC={isAtPC} autoShowProjects={autoShowProjects} />
+              <World isAtPC={isAtPC} autoShowProjects={autoShowProjects} onSignIn={onSignIn} />
               <MonitorLight />
             </PresentationControls>
 

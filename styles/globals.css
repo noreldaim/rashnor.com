@@ -429,7 +429,34 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: not-allowed;
+  }
+
+  .term-signin-btn {
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 18px;
+    padding: 2px 14px;
+    margin-top: 12px;
+    border: 2px solid var(--term-green);
+    background: var(--term-bg);
+    color: var(--term-green);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.5);
+    animation: term-fadein 0.5s ease;
+  }
+
+  .term-signin-btn:hover {
+    background: var(--term-green);
+    color: var(--term-bg);
+    box-shadow: 0 0 12px rgba(0, 255, 102, 0.4);
+  }
+
+  @keyframes term-fadein {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Main screen layout */

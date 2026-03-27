@@ -28,7 +28,7 @@
       },
       "sequence": {
         "subUnitsPerUnit": 30,
-        "length": 5.83,
+        "length": 7.4,
         "type": "PositionalSequence",
         "tracksByObject": {
           "Camera": {
@@ -146,6 +146,19 @@
                     ],
                     "type": "bezier",
                     "value": 0.018
+                  },
+                  {
+                    "id": "qyp7n10eo8",
+                    "position": 7.4,
+                    "connectedRight": true,
+                    "handles": [
+                      0.5,
+                      1,
+                      0.5,
+                      0
+                    ],
+                    "type": "bezier",
+                    "value": 0.10800000000000004
                   }
                 ]
               },
@@ -204,6 +217,19 @@
                     ],
                     "type": "bezier",
                     "value": 0.6304485050516242
+                  },
+                  {
+                    "id": "BaBfLRJ8Jx",
+                    "position": 7.4,
+                    "connectedRight": true,
+                    "handles": [
+                      0.5,
+                      1,
+                      0.5,
+                      0
+                    ],
+                    "type": "bezier",
+                    "value": 0.30044850505162385
                   }
                 ]
               },
@@ -430,7 +456,7 @@
                   },
                   {
                     "id": "uHl-3pHaCq",
-                    "position": 5.667,
+                    "position": 5.833,
                     "connectedRight": true,
                     "handles": [
                       0.5,
@@ -838,6 +864,7 @@
   },
   "definitionVersion": "0.4.0",
   "revisionHistory": [
+    "Rofum7lMhKHJeg8v",
     "qzhGELHVlgDiN3pK",
     "NKjFdNNRiqptDdDq",
     "tbkcpePUN035WWl3",

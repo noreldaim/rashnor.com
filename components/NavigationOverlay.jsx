@@ -3,9 +3,9 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 
 const WAYPOINTS = [
   { offset: 0, label: "Home" },
-  { offset: 0.32, label: "About" },
-  { offset: 0.63, label: "Skills" },
-  { offset: 1.0, label: "Projects" },
+  { offset: 0.252, label: "About" },
+  { offset: 0.500, label: "Skills" },
+  { offset: 0.788, label: "Terminal" },
 ];
 
 function smoothScrollTo(scrollEl, targetOffset, duration = 1200) {
