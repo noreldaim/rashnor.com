@@ -151,7 +151,7 @@ const MainCanvas = ({ setScroll, autoShowProjects, onSignIn }) => {
               position={[0.1, 0.8, 0]}
               rotation={[0, 0, 0]}
             >
-              <boxGeometry args={[2.1, 0.66, 0.01]} />
+              <boxGeometry args={[2.5, 0.8, 0.01]} />
               <meshBasicMaterial transparent opacity={0} />
               <Skills />
             </e.mesh>

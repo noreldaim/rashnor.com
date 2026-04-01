@@ -226,7 +226,7 @@ export function Monitor({ isAtPC, autoShowProjects, onSignIn }) {
   // Show sign-in button after a short delay when arriving at PC
   useEffect(() => {
     if (isAtPC && !signedIn) {
-      const timer = setTimeout(() => setShowSignIn(true), 800);
+      const timer = setTimeout(() => setShowSignIn(true), 400);
       return () => clearTimeout(timer);
     }
     if (!isAtPC) {

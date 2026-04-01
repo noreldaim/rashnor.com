@@ -60,63 +60,216 @@ html, body {
     transform: translateY(46px);
   }
 }
-/************************About Me Card************************/
+/************************ HUD Cards — About & Skills ************************/
 
-.about-me {
-    /* From https://css.glass */
-    background: rgba(51, 19, 179, 0.26);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border: 1px solid rgba(255, 255, 255, 0.82);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 75%;
-    height: 90%;
-    margin-left: 10px;
-  }
-  
-  .profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    height: 100%;
-    margin-left: 10px;
-  }
-  
-  .profile-pic {
-    height: 75%;
-    width: 100%;
-    background: rgba(51, 19, 179, 0.26);
-    border-radius: 50%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border: 2px solid rgba(255, 255, 255, 0.82);
-  }
+.hud-card {
+  position: relative;
+  background: rgba(15, 8, 60, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 4px;
+  box-shadow:
+    0 0 30px rgba(99, 60, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  font-family: 'Montserrat', sans-serif;
+  color: #e2e0ff;
+  overflow: hidden;
+}
 
+/* Corner accents — thin L-shaped brackets */
+.hud-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.hud-corner-tl {
+  top: 4px; left: 4px;
+  border-top: 2px solid rgba(167, 139, 250, 0.6);
+  border-left: 2px solid rgba(167, 139, 250, 0.6);
+}
+.hud-corner-br {
+  bottom: 4px; right: 4px;
+  border-bottom: 2px solid rgba(167, 139, 250, 0.6);
+  border-right: 2px solid rgba(167, 139, 250, 0.6);
+}
 
-/***********************Skills Card***********************/
+/* ── ABOUT CARD ─────────────────────── */
+.about-card {
+  width: 680px;
+  height: 190px;
+  display: flex;
+  padding: 14px 18px;
+  gap: 18px;
+}
 
-.skills-pic {
-    height: 75%;
-    width: 100%;
-    background: rgba(51, 19, 179, 0.26);
-    border-radius: 50%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border: 2px solid rgba(255, 255, 255, 0.82);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.hud-portrait-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.hud-portrait-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  padding: 3px;
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
+  flex-shrink: 0;
+}
+
+.hud-portrait-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hud-portrait-label {
+  font-family: 'VT323', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(167, 139, 250, 0.5);
+}
+
+.hud-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.hud-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.hud-name {
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+}
+
+.hud-status {
+  font-family: 'VT323', monospace;
+  font-size: 12px;
+  color: #86efac;
+  letter-spacing: 1px;
+}
+
+.hud-role {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(167, 139, 250, 0.8);
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+
+.hud-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.4) 0%, transparent 100%);
+  margin: 6px 0;
+}
+
+.hud-bio {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgba(226, 224, 255, 0.75);
+  margin: 0 0 4px 0;
+}
+
+.hud-meta-row {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.hud-meta-item {
+  font-size: 10px;
+  color: rgba(167, 139, 250, 0.55);
+  letter-spacing: 0.3px;
+}
+
+/* ── SKILLS CARD ────────────────────── */
+.skills-card {
+  width: 780px;
+  height: 250px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+.skills-title {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+}
+
+.skills-count {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  color: rgba(167, 139, 250, 0.45);
+  letter-spacing: 1px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 14px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.skills-category {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.skills-cat-label {
+  font-family: 'VT323', monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  opacity: 0.8;
+}
+
+.skills-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.skills-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border: 1px solid;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+}
 
 /********************Dropdown Menu Button****************************/
 
